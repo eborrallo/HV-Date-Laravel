@@ -33,7 +33,7 @@ class IndexController extends Controller
             $toReturn->stringDayCAT = $customDate->getDayCAT();
             $toReturn->stringDayES = $customDate->getDayES();
             $toReturn->isLeap = $customDate->isLeap();
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $toReturn->success = false;
         }
         return response()->json($toReturn);

@@ -7,6 +7,8 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+    var dateHelp = $("#dateHelp");
+    var result = $("#result");
     // Set up an event listener for the  form.
     $('#btnFormGetDay').click(function (event) {
 
@@ -20,12 +22,14 @@ $(document).ready(function () {
                 url: "/getDay",
                 data: formData,
                 success: function (data) {
-                    $("#result").html("");
-                    $('#result').append('Spanish Day: ' + data.stringDayES + '<br>');
-                    $('#result').append('Catalan Day: ' + data.stringDayCAT + '<br>');
-                    $('#result').append('Is a leap year: ' + data.isLeap.toString() + '<br>');
-                    $("#dateHelp").css('cssText', 'color: none');
-                    $("#dateHelp").html('Write a date as format dd-mm-YYYY.');
+
+
+                    result.html("");
+                    result.append('Spanish Day: ' + data.stringDayES + '<br>');
+                    result.append('Catalan Day: ' + data.stringDayCAT + '<br>');
+                    result.append('Is a leap year: ' + data.isLeap.toString() + '<br>');
+                    dateHelp.css('cssText', 'color: none');
+                    dateHelp.html('Write a date as format dd-mm-YYYY.');
                 },
                 error: function (data) {
                     console.log(data);
@@ -35,9 +39,9 @@ $(document).ready(function () {
         }
     });
     function seeError() {
-        $("#result").html("");
-        $("#dateHelp").html('The date could not be read, check that it is well written.');
-        $("#dateHelp").css('cssText', 'color: red !important');
+        result.html("");
+        dateHelp.html('The date could not be read, check that it is well written.');
+        dateHelp.css('cssText', 'color: red !important');
     }
 
     function validate() {
