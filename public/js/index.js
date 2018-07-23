@@ -28,7 +28,7 @@ $(document).ready(function () {
                     $("#dateHelp").html('Write a date as format dd-mm-YYYY.');
                 },
                 error: function (data) {
-                    console.log(data)
+                    console.log(data);
                     seeError();
                 }
             })

@@ -49,6 +49,9 @@ class customDate
 
     }
 
+    /**
+     * Get a true/false if it is a leap year 
+     */
     function isLeap()
     {
         if (($this->year % 4 == 0) && (($this->year % 100 != 0) || ($this->year % 400 == 0))) {
