@@ -48,3 +48,7 @@ html, body {
 .m-b-md {
     margin-bottom: 30px;
 }
+.result{
+    padding-top:20px;
+    font-weight: bold !important;
+}

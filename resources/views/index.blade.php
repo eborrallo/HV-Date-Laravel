@@ -17,54 +17,7 @@
 
     <!-- JavaScript -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script>
-        $(document).ready(function () {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            // Set up an event listener for the  form.
-            $('#btnFormGetDay').click(function (event) {
-
-                event.preventDefault(event);
-                // Serialize the form data.
-                var formData = $('#formGetDay').serialize();
-                if (validate()) {
-                    //Send AJAX-POST
-                    $.ajax({
-                        type: 'POST',
-                        url: "/getDay",
-                        data: formData,
-                        success: function (data) {
-                            $('#result').append(data.stringDayES + '<br>');
-                            $('#result').append(data.stringDayCAT + '<br>');
-                            $('#result').append(data.isLeap.toString() + '<br>');
-                            $("#dateHelp").css('cssText', 'color: none');
-                            $("#dateHelp").html('Write a date as format dd-mm-YYYY.');
-                        },
-                        error: function (data) {
-                            seeError();
-                        }
-                    })
-                }
-            });
-            function seeError() {
-                $("#dateHelp").html('The date could not be read, check that it is well written.');
-                $("#dateHelp").css('cssText', 'color: red !important');
-            }
-
-            function validate() {
-                if (!$('#inputDate').val()) {
-                    seeError()
-                    return false;
-                }
-                return true;
-            }
-        })
-        ;
-
-    </script>
+    <script src="{{ asset('js/index.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
 
@@ -85,7 +38,7 @@
         </form>
         <button id="btnFormGetDay" class="btn btn-primary">Submit</button>
 
-        <div id="result">
+        <div id="result" class="result">
 
         </div>
     </div>

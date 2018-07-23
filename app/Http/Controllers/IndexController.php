@@ -30,18 +30,14 @@ class IndexController extends Controller
                 $toReturn->success = false;
             }
             $customDate = new customDate($request->date);
-            $toReturn->stringDayCAT = $customDate->getDayCAT();
-            $toReturn->stringDayES = $customDate->getDayES();
+            $toReturn->stringDayCAT = utf8_encode($customDate->getDayCAT());
+            $toReturn->stringDayES = utf8_encode($customDate->getDayES());
             $toReturn->isLeap = $customDate->isLeap();
         } catch (Exception $e) {
             $toReturn->success = false;
         }
-        $toReturn = data2HTML($toReturn);
         return response()->json($toReturn);
     }
 
-    public function data2HTML($data)
-    {
 
-    }
 }

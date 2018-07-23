@@ -16,7 +16,7 @@ class customDate
     public $day;
     public $month;
     public $year;
-    const INIT_DATE =  '23.07.2018';
+    const INIT_DATE = '23.07.2018';
 
     /**
      * customDate constructor.
@@ -30,6 +30,8 @@ class customDate
         $this->year = $this->date->format('Y');
     }
 
+    /**Get a day string format  in Catalan
+     */
     function getDayCAT()
     {
         setlocale(LC_ALL, "ca_ES", 'Catalan_Spain', 'Catalan');
@@ -37,6 +39,9 @@ class customDate
 
     }
 
+    /**
+     * Get a day string format  in Spanish
+     */
     function getDayES()
     {
         setlocale(LC_ALL, "es_ES", 'Spanish_Spain', 'Spanish');
