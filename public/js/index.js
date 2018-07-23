@@ -42,10 +42,9 @@ $(document).ready(function () {
 
     function validate() {
         if (!$('#inputDate').val()) {
-            seeError()
+            seeError();
             return false;
         }
         return true;
     }
-})
-;
+});
