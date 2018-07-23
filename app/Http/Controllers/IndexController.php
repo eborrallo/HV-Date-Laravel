@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -16,15 +16,32 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $date=  new \DateTime(customDate::INIT_DATE);
-        return view('index',['date' => $date->format('d-m-Y') ]);
+        $date = new \DateTime(customDate::INIT_DATE);
+        return view('index', ['date' => $date->format('d-m-Y')]);
     }
 
-   public function getDay(Request $request){
+    public function getDay(Request $request)
+    {
 
-       $date=$request->date;
-       $customDate=new customDate($date);
-       $stringDay=$customDate->getDayCAT();
-       return response()->json($stringDay);
-   }
+        $toReturn = new \stdClass();
+        try {
+
+            if (empty($request->date)) {
+                $toReturn->success = false;
+            }
+            $customDate = new customDate($request->date);
+            $toReturn->stringDayCAT = $customDate->getDayCAT();
+            $toReturn->stringDayES = $customDate->getDayES();
+            $toReturn->isLeap = $customDate->isLeap();
+        } catch (Exception $e) {
+            $toReturn->success = false;
+        }
+        $toReturn = data2HTML($toReturn);
+        return response()->json($toReturn);
+    }
+
+    public function data2HTML($data)
+    {
+
+    }
 }
