@@ -35,7 +35,7 @@ class customDate
     function getDayCAT()
     {
         setlocale(LC_ALL, "ca_ES", 'Catalan_Spain', 'Catalan');
-        return strftime('%A', $this->date->getTimestamp());
+        return utf8_encode(strftime('%A', $this->date->getTimestamp()));
 
     }
 
@@ -45,7 +45,7 @@ class customDate
     function getDayES()
     {
         setlocale(LC_ALL, "es_ES", 'Spanish_Spain', 'Spanish');
-        return strftime('%A', $this->date->getTimestamp());
+        return utf8_encode(strftime('%A', $this->date->getTimestamp()));
 
     }
 
