@@ -12,4 +12,7 @@
 */
 
 Route::get('/',  'IndexController@index');
+Route::get('/vue',  function(){
+    return view('indexVue');
+});
 Route::post('/getDay', 'IndexController@getDay');

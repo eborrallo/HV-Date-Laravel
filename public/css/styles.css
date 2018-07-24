@@ -55,3 +55,6 @@ html, body {
 input{
     text-align: center;
 }
+.error{
+    color: red !important
+}

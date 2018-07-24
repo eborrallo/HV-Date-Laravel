@@ -30,6 +30,7 @@ $(document).ready(function () {
                     result.append('Is a leap year: ' + data.isLeap.toString() + '<br>');
                     dateHelp.css('cssText', 'color: none');
                     dateHelp.html('Write a date as format dd-mm-YYYY.');
+                    console.log(data);
                 },
                 error: function (data) {
                     console.log(data);
