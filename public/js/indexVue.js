@@ -27,6 +27,9 @@ const app = new Vue({
                     app.errorMessage = 'Write a date as format dd-mm-YYYY.';
                     app.isError = false;
                 } else {
+                    app.spanishDay = '';
+                    app.catalanDay = '';
+                    app.isLeap = '';
                     app.isError = true;
                     app.errorMessage = 'The date could not be read, check that it is well written.';
                 }
